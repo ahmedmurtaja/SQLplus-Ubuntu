@@ -1,4 +1,5 @@
-# SQLplus-Ubuntu-
+# SQLplus-Ubuntu-Download 
+>Guide to Download Oracle on Ubuntu 20.04
 
 ##### 1 - Go To the following URL to download the package with the Oracle installer
 
