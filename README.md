@@ -88,3 +88,63 @@ esac
 
 ```
 >We save the changes made `(Ctrl + O)` + Enter and exit the document `(Ctrl + X).`
+
+##### We give all the permissions to the file that we just modified previously:
+`sudo chmod 777 /etc/rc2.d/S01shm_load`
+
+### Finally, we restart the computer to apply the changes.
+
+<hr>
+
+## Oracle installation
+
+>Once we have configured Oracle, now it's time to start with the installation.
+
+##### We open the terminal again and move to the next route or open Disk1 in Terminal
+`cd /home/<your-user>/Desktop/Disk1`
+
+##### We install the following package with the following command:
+`sudo dpkg --install oracle-xe_11.2.0-2_amd64.deb`
+
+<hr>
+
+## Oracle Configuration
+
+##### We execute the following command to start with the Oracle configuration.
+`sudo /etc/init.d/oracle-xe configure`
+
+
+>For the configuration, it will ask us for the following information:
+>
+>HTTP port (8081), Listening port (1521), the password to access Oracle and if you want Oracle to start automatically when you start the computer (y=yes, >n=no).
+>
+>We wait for the changes to be configured (this process can take several minutes)
+
+##### Now it's time to set the environment variables:
+
+`pico ~/.bashrc`
+
+##### We go to the last line of the document and add the following lines.
+
+```
+export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe
+export ORACLE_SID=XE
+export NLS_LANG=`$ORACLE_HOME/bin/nls_lang.sh`
+export ORACLE_BASE=/u01/app/oracle
+export LD_LIBRARY_PATH=$ORACLE_HOME/lib:$LD_LIBRARY_PATH
+export PATH=$ORACLE_HOME/bin:$PATH
+
+```
+>We save the changes made `(Ctrl + O)` + Enter and exit the document `(Ctrl + X).`
+
+##### We apply the environment variables.
+
+`. ~/.profile`
+
+##### Finally, we must start the Oracle service with the following command:
+` sudo service oracle-xe start `
+
+
+
+
+
